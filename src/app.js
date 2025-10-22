@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 const usersRouter = require('./routes/users');
 const newsRouter = require('./routes/news');
@@ -11,7 +12,8 @@ const app = express();
 // Core middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cookieParser());
+app.use(cors({ origin: true, credentials: true }));
 app.use(morgan('dev'));
 
 // Routes
