@@ -1,17 +1,7 @@
-const express = require('express');
-const app = express();
-const port = 3000;
+// Load environment variables early
+require('dotenv').config();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-app.listen(port, (err) => {
-    if (err) {
-        return console.log('Something bad happened', err);
-    }
-    console.log(`Server is listening on ${port}`);
-});
-
-
+// Export the configured Express app without starting the server
+const app = require('./src/app');
 
 module.exports = app;
